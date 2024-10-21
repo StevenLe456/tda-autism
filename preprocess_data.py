@@ -22,8 +22,8 @@ subj_dict = {}
 
 for subid, s in subj.items():
     temp = {}
-    g = nx.to_dict_of_dicts(nx.relabel_nodes(nx.read_weighted_edgelist(s, create_using=nx.DiGraph), brain_regions))
-    p = df.loc[df["SUB_ID"] == subid].to_dict()
+    g = nx.to_dict_of_dicts(nx.read_weighted_edgelist(s, create_using=nx.DiGraph))
+    p = df.loc[df["SUB_ID"] == subid].squeeze().to_dict()
     temp["graph"] = g
     temp["phenotype"] = p
     subj_dict[subid] = temp
